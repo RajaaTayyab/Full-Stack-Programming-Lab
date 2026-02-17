@@ -1,0 +1,57 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #fdf6ec, #f5ebe0);
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+}
+
+.todo-container {
+    background: #ffffff;
+    padding: 25px;
+    width: 420px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: #7a7a7a;
+    margin-bottom: 15px;
+}
+
+.task {
+    margin: 12px 0;
+}
+
+input {
+    padding: 8px;
+    width: 200px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #faf9f7;
+}
+
+button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 8px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:first-of-type {
+    background-color: #a3b18a;
+    color: white;
+}
+
+button:last-of-type {
+    background-color: #e5989b;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.85;
+}

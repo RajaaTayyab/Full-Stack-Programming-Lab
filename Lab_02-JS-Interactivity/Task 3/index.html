@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="todo-container">
+    <h2>To-Do List</h2>
+    <p class="subtitle">By Tayyab Ahmed Janjua 231736</p>
+
+    <div class="task">
+        <input type="text" id="task1" value="Complete JavaScript Lab">
+        <button onclick="completeTask('task1')">Complete</button>
+        <button onclick="removeTask('task1')">Remove</button>
+    </div>
+
+    <div class="task">
+        <input type="text" id="task2" value="Practice DOM Manipulation">
+        <button onclick="completeTask('task2')">Complete</button>
+        <button onclick="removeTask('task2')">Remove</button>
+    </div>
+
+    <div class="task">
+        <input type="text" id="task3" value="Submit Assignment">
+        <button onclick="completeTask('task3')">Complete</button>
+        <button onclick="removeTask('task3')">Remove</button>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
