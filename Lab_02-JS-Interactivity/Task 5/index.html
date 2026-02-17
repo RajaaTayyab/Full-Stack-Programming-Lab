@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Registration Form</h2>
+    <p class="subtitle">By Tayyab Ahmed Janjua 231736</p>
+
+    <input type="text" id="name" placeholder="Enter Name">
+    <p id="nameError" class="error"></p>
+
+    <input type="text" id="email" placeholder="Enter Email">
+    <p id="emailError" class="error"></p>
+
+    <input type="number" id="age" placeholder="Enter Age">
+    <p id="ageError" class="error"></p>
+
+    <input type="password" id="password" placeholder="Enter Password">
+    <p id="passwordError" class="error"></p>
+
+    <button onclick="validateForm()">Register</button>
+
+    <p id="successMessage"></p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
