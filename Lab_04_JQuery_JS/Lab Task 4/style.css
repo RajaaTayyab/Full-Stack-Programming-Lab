@@ -1,0 +1,92 @@
+/* Lab Task 4 - CSS */
+/* Tabbed Content with Smooth Scroll */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+/* tab buttons bar */
+#tab-buttons {
+    text-align: center;
+    margin: 20px 0 0 0;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 0;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    background-color: #ddd;
+    border: none;
+    border-radius: 4px 4px 0 0;
+    font-size: 15px;
+    cursor: pointer;
+    margin-right: 4px;
+    color: #333;
+}
+
+.tab-btn:hover {
+    background-color: #bbb;
+}
+
+/* active tab looks different */
+.tab-btn.active {
+    background-color: #3498db;
+    color: white;
+}
+
+/* all tab content hidden by default */
+.tab-content {
+    display: none;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-top: none;
+    padding: 25px 30px;
+    max-width: 700px;
+    margin: 0 auto;
+    border-radius: 0 0 6px 6px;
+
+    /* animation for when content appears */
+    animation: fadeIn 0.4s ease;
+}
+
+/* only the active tab content is shown */
+.tab-content.active-tab {
+    display: block;
+}
+
+/* fade in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        margin-top: 15px;
+    }
+    to {
+        opacity: 1;
+        margin-top: 0px;
+    }
+}
+
+.tab-content h2 {
+    color: #3498db;
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.tab-content p {
+    color: #555;
+    line-height: 1.7;
+}
+
+.tab-content ul {
+    color: #555;
+    line-height: 2;
+}

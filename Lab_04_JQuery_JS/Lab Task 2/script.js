@@ -12,6 +12,7 @@ var totalImages = 5;
 
 function showImage(newIndex) {
     var currentImg = document.getElementById("img" + currentIndex);
+
     currentImg.classList.remove("active");
     currentImg.classList.add("fading");
 
@@ -24,7 +25,6 @@ function showImage(newIndex) {
         newImg.classList.add("active");
 
         document.getElementById("caption-text").innerHTML = captions[currentIndex];
-
         document.getElementById("slide-num").innerHTML = (currentIndex + 1) + " / " + totalImages;
 
     }, 400);
