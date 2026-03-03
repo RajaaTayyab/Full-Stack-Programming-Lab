@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Task 2 - Image Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Image Gallery</h1>
+    <h3>by Tayyab Ahmed Janjua </h3>
+
+    <div id="gallery-box">
+
+        <img src="https://picsum.photos/seed/mountain/600/380" alt="Mountain" class="gallery-img active" id="img0">
+        <img src="https://picsum.photos/seed/beach/600/380" alt="Beach" class="gallery-img" id="img1">
+        <img src="https://picsum.photos/seed/forest/600/380" alt="Forest" class="gallery-img" id="img2">
+        <img src="https://picsum.photos/seed/city/600/380" alt="City" class="gallery-img" id="img3">
+        <img src="https://picsum.photos/seed/desert/600/380" alt="Desert" class="gallery-img" id="img4">
+
+        <p id="caption-text">Photo 1 - Mountain View</p>
+
+        <div id="btn-area">
+            <button onclick="prevImage()">&#8592; Previous</button>
+            <span id="slide-num">1 / 5</span>
+            <button onclick="nextImage()">Next &#8594;</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

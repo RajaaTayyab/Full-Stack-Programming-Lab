@@ -10,6 +10,11 @@ h1 {
     text-align: center;
 }
 
+h3 {
+    color: #333;
+    text-align: center;
+}
+
 #input-area {
     text-align: center;
     margin: 20px 0;
@@ -67,7 +72,6 @@ button:hover {
     align-items: center;
 }
 
-/* highlight on hover */
 #my-list li:hover {
     background-color: #e8f5e9;
     border-color: #4CAF50;
