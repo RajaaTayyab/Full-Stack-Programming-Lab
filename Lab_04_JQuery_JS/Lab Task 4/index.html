@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lab Task 4 - Tabbed Content</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="page-wrapper">
+        <h1 class="main-title">Project Hub</h1>
+        <p class="main-sub">AI Brand Visibility & Authority Engine</p>
 
-        <h1 class="main-title">Tabbed Content Page</h1>
-        <p class="main-sub">Click a tab to see content &amp; smooth scroll</p>
-
-        <!-- tab buttons -->
         <div id="tab-bar">
             <button class="tab-btn active" onclick="openTab('home', this)">🏠 Home</button>
             <button class="tab-btn" onclick="openTab('about', this)">👤 About</button>
@@ -23,152 +20,43 @@
             <button class="tab-btn" onclick="openTab('contact', this)">✉️ Contact</button>
         </div>
 
-        <!-- tab content -->
         <div id="content-box">
 
-            <!-- HOME -->
             <div id="home" class="tab-content active-tab">
-                <h2>Welcome to Our Website 👋</h2>
-                <p>This is the home tab. Here you will find some basic info about this website and what we do.</p>
-
+                <h2>Welcome 👋</h2>
+                <p>Developing the future of brand authority using AI-driven analytics.</p>
                 <div class="info-cards">
-                    <div class="info-card">
-                        <div class="card-icon">🚀</div>
-                        <h3>Fast</h3>
-                        <p>Our website loads quickly and works on all devices.</p>
-                    </div>
-                    <div class="info-card">
-                        <div class="card-icon">🎨</div>
-                        <h3>Designed</h3>
-                        <p>Clean and simple design that is easy to use.</p>
-                    </div>
-                    <div class="info-card">
-                        <div class="card-icon">🔒</div>
-                        <h3>Secure</h3>
-                        <p>We keep your data safe and private always.</p>
-                    </div>
+                    <div class="info-card"><h3>Fast</h3><p>Optimized for rapid deployment.</p></div>
+                    <div class="info-card"><h3>Clean</h3><p>Minimalist UI for focus.</p></div>
+                    <div class="info-card"><h3>Secure</h3><p>Encrypted data handling.</p></div>
                 </div>
             </div>
 
-            <!-- ABOUT -->
             <div id="about" class="tab-content">
-                <h2>About Us 👥</h2>
-                <p>We are a small team of developers who love building websites. We started in 2020 as a college project and have been growing since then.</p>
-                <p style="margin-top: 12px;">We believe in clean code and good design. Our team is based in Islamabad, Pakistan.</p>
-
-                <h3 class="sub-heading">Quick Facts</h3>
+                <h2>About the Project 👥</h2>
+                <p>The "AI Brand Visibility & Authority Engine" is designed to revolutionize how digital footprints are managed.</p>
                 <ul class="nice-list">
-                    <li>📅 Founded in 2020</li>
-                    <li>👨‍💻 Team of 10 people</li>
-                    <li>📍 Based in Islamabad</li>
-                    <li>✅ 50+ projects completed</li>
-                    <li>😊 Happy clients worldwide</li>
+                    <li>📅 FYP Proposal: April 9, 2026</li>
+                    <li>📍 Islamabad, Pakistan</li>
+                    <li>✅ 50% Development Target (FYP 2)</li>
                 </ul>
             </div>
 
-            <!-- SERVICES -->
-            <div id="services" class="tab-content">
-                <h2>Our Services ⚙️</h2>
-                <p>Here is what we offer to our clients:</p>
-
-                <div class="service-list">
-                    <div class="service-item">
-                        <span class="service-num">01</span>
-                        <div>
-                            <h3>Web Design</h3>
-                            <p>We design beautiful websites that look good on all screen sizes.</p>
-                        </div>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-num">02</span>
-                        <div>
-                            <h3>Frontend Development</h3>
-                            <p>HTML, CSS and JavaScript — we build exactly what you need.</p>
-                        </div>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-num">03</span>
-                        <div>
-                            <h3>Backend Development</h3>
-                            <p>Databases, APIs and server-side code using PHP and Node.js.</p>
-                        </div>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-num">04</span>
-                        <div>
-                            <h3>Mobile Apps</h3>
-                            <p>Cross-platform apps for Android and iOS devices.</p>
-                        </div>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-num">05</span>
-                        <div>
-                            <h3>SEO & Support</h3>
-                            <p>We help your website rank on Google and provide ongoing support.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PORTFOLIO -->
-            <div id="portfolio" class="tab-content">
-                <h2>Our Portfolio 💼</h2>
-                <p>Some projects we are proud of:</p>
-
-                <div class="portfolio-grid">
-                    <div class="portfolio-card" style="background: linear-gradient(135deg, #667eea, #764ba2);">
-                        <h3>Bloom Store</h3>
-                        <p>E-commerce website for a flower shop. Increased sales by 34%.</p>
-                        <span class="p-tag">E-Commerce</span>
-                    </div>
-                    <div class="portfolio-card" style="background: linear-gradient(135deg, #11998e, #38ef7d);">
-                        <h3>EduTrack</h3>
-                        <p>School management system used by 20+ schools in Pakistan.</p>
-                        <span class="p-tag">Education</span>
-                    </div>
-                    <div class="portfolio-card" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
-                        <h3>Pulse App</h3>
-                        <p>A finance tracker mobile app with 50,000+ downloads.</p>
-                        <span class="p-tag">Finance</span>
-                    </div>
-                    <div class="portfolio-card" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
-                        <h3>Wavform</h3>
-                        <p>Music streaming platform for independent artists.</p>
-                        <span class="p-tag">Music</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CONTACT -->
+            <div id="services" class="tab-content"><h2>Services ⚙️</h2><p>AI Analysis, SEO, and Authority Building.</p></div>
+            <div id="portfolio" class="tab-content"><h2>Portfolio 💼</h2><p>View our latest AI engine case studies.</p></div>
+            
             <div id="contact" class="tab-content">
                 <h2>Contact Us ✉️</h2>
-                <p>Want to work with us? Send us a message below!</p>
-
-                <div class="contact-layout">
-
-                    <div class="contact-info">
-                        <h3 class="sub-heading">Our Details</h3>
-                        <p>📧 hello@example.com</p>
-                        <p>📞 +92 300 1234567</p>
-                        <p>📍 Islamabad, Pakistan</p>
-                        <p>🕐 Mon–Fri, 9am to 6pm</p>
-                    </div>
-
-                    <div class="contact-form">
-                        <h3 class="sub-heading">Send a Message</h3>
-                        <input type="text" id="c-name" placeholder="Your Name">
-                        <input type="email" id="c-email" placeholder="Your Email">
-                        <textarea id="c-msg" placeholder="Your message..."></textarea>
-                        <button onclick="sendMsg()">Send Message</button>
-                        <p id="form-msg" style="display:none;">✅ Message sent! We will reply soon.</p>
-                    </div>
-
+                <div class="contact-form">
+                    <input type="text" id="c-name" placeholder="Your Name">
+                    <input type="email" id="c-email" placeholder="Your Email">
+                    <textarea id="c-msg" placeholder="Your message..."></textarea>
+                    <button onclick="sendMsg()">Send Message</button>
+                    <p id="form-msg" style="display:none; color: var(--accent); margin-top:10px;">✅ Message sent!</p>
                 </div>
             </div>
 
         </div>
-        <!-- end content box -->
-
     </div>
 
     <script src="script.js"></script>
