@@ -1,2 +1,8 @@
 *.docx
 node_modules
+*.docx
+node_modules/
+.next/
+out/
+.DS_Store
+Thumbs.db
