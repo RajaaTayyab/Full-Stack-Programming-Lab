@@ -1,0 +1,81 @@
+// data/products.js — central product data
+const products = [
+  {
+    id: '1',
+    title: 'AirPods Pro Max',
+    description: 'Over-ear noise-cancelling headphones with premium sound quality and spatial audio.',
+    price: 145000,
+    category: 'Audio',
+    emoji: '🎧',
+    rating: 4.8,
+    reviews: 2340,
+    features: ['Active Noise Cancellation', 'Spatial Audio', '20hr Battery', 'Premium Build'],
+    color: 'from-indigo-600 to-purple-600',
+  },
+  {
+    id: '2',
+    title: 'MechKey Pro Keyboard',
+    description: 'Wireless mechanical keyboard with RGB backlight and tactile brown switches for productivity.',
+    price: 18000,
+    category: 'Peripherals',
+    emoji: '⌨️',
+    rating: 4.6,
+    reviews: 987,
+    features: ['Wireless Bluetooth', 'RGB Backlight', 'Brown Switches', 'USB-C Charging'],
+    color: 'from-emerald-600 to-teal-600',
+  },
+  {
+    id: '3',
+    title: 'UltraWide 34" Monitor',
+    description: 'Curved ultrawide monitor with 144Hz refresh rate, perfect for gaming and creative work.',
+    price: 27999,
+    category: 'Displays',
+    emoji: '🖥️',
+    rating: 4.9,
+    reviews: 1560,
+    features: ['144Hz Refresh Rate', 'Curved Panel', '1ms Response Time', 'HDR10 Support'],
+    color: 'from-rose-600 to-orange-500',
+  },
+  {
+    id: '4',
+    title: 'StreamCam Pro',
+    description: 'Full HD webcam with AI face tracking, ring light, and studio-quality microphone built in.',
+    price: 20000,
+    category: 'Cameras',
+    emoji: '📷',
+    rating: 4.5,
+    reviews: 643,
+    features: ['1080p 60fps', 'AI Face Tracking', 'Built-in Ring Light', 'Studio Mic'],
+    color: 'from-sky-600 to-blue-600',
+  },
+  {
+    id: '5',
+    title: 'ErgoChair Elite',
+    description: 'Fully ergonomic office chair with lumbar support, adjustable armrests, and breathable mesh.',
+    price: 15000,
+    category: 'Furniture',
+    emoji: '🪑',
+    rating: 4.7,
+    reviews: 3120,
+    features: ['Lumbar Support', '4D Armrests', 'Breathable Mesh', '5-Year Warranty'],
+    color: 'from-amber-500 to-yellow-500',
+  },
+  {
+    id: '6',
+    title: 'USB-C Hub Pro',
+    description: 'Compact 10-in-1 USB-C hub with 4K HDMI, SD card reader, and 100W power delivery.',
+    price: 3500,
+    category: 'Accessories',
+    emoji: '🔌',
+    rating: 4.4,
+    reviews: 2870,
+    features: ['10 Ports', '4K HDMI Output', '100W PD', 'SD & MicroSD'],
+    color: 'from-slate-600 to-gray-700',
+  },
+];
+
+export default products;
+
+export function getProductById(id) {
+  return products.find((p) => p.id === id) || null;
+}
