@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-slate-50 text-slate-900;
+}
+
+.glass-card {
+  @apply rounded-2xl border border-slate-200 bg-white/95 shadow-sm;
+}
+
+.btn-main {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-2.5 font-semibold text-white transition hover:-translate-y-0.5 hover:brightness-95;
+}
+
+.btn-soft {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-5 py-2.5 font-semibold text-slate-700 transition hover:bg-slate-100;
+}
+
+.field {
+  @apply w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 outline-none ring-brand-100 transition focus:border-brand-600 focus:ring-2;
+}
