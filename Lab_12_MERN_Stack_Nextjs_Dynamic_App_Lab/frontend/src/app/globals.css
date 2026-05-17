@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-jost: 'Jost', system-ui, sans-serif;
+  --font-dm-mono: 'DM Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-jost);
+}
+
+body {
+  background-color: #faf7f2;
+  color: #1c1c1c;
+  font-family: var(--font-jost);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1ebe0; }
+::-webkit-scrollbar-thumb { background: #c47a2e; border-radius: 3px; }
+
+/* Selection color */
+::selection { background: #f0d5aa; color: #1c1c1c; }
+
+/* Grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-wood-600 text-white px-6 py-3 font-body font-500 tracking-wide
+           hover:bg-wood-700 active:bg-wood-800 transition-all duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-outline {
+    @apply border border-wood-600 text-wood-600 px-6 py-3 font-body font-500 tracking-wide
+           hover:bg-wood-600 hover:text-white transition-all duration-200;
+  }
+
+  .section-title {
+    @apply font-display text-3xl md:text-4xl font-600 text-charcoal;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  .input-field {
+    @apply w-full border border-wood-200 bg-white px-4 py-3 font-body text-charcoal
+           placeholder-wood-300 focus:outline-none focus:border-wood-500
+           transition-colors duration-200;
+  }
+
+  .tag {
+    @apply inline-block bg-wood-100 text-wood-700 text-xs font-mono px-2 py-1;
+  }
+}
