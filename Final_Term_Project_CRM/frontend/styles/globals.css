@@ -1,0 +1,281 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Sage & Alabaster Palette */
+  --bg:           #ffffff;                  /* Component Cards / Surfaces */
+  --bg-secondary: #f4f4f0;                  /* Main Background (Warm Alabaster) */
+  --bg-tertiary:  #eaeae4;                  /* Secondary Hover / Structural Grays */
+  --border:       #e6e6e0;                  /* Warm, muted grey-beige borders */
+  --border-dark:  #cbcbbf;                  /* Darker borders for fields/secondary buttons */
+  
+  /* Typography */
+  --text:         #1a2621;                  /* Deep charcoal green */
+  --text-muted:   #55635c;                  /* Soft slate-sage for subtext */
+  --text-light:   #8c9b93;                  /* Light placeholder values */
+  
+  /* Primary Brand Accent (Deep Sage) */
+  --primary:       #2c4a3e;                 /* Grounded, executive sage green */
+  --primary-hover: #1e332a;                 /* Darker forest tint */
+  --primary-soft:  #ebefed;                 /* Light tint for background fills */
+  
+  /* Semantic Status Indicators */
+  --success:       #3f6655;                 /* Muted moss green */
+  --success-soft:  #edf2ef;                 /* Calm positive tint */
+  --warning:       #c87a53;                 /* Soft terracotta/rust */
+  --warning-soft:  #faf1ec;                 /* Warm alert background */
+  --danger:        #b84a39;                 /* Deeper organic crimson */
+  --danger-soft:   #f9ecea;                 /* Soft danger tint */
+  
+  /* Elevation & Borders */
+  --shadow-sm:    0 1px 2px rgba(26, 38, 33, 0.03);
+  --shadow:       0 1px 3px rgba(26, 38, 33, 0.05), 0 1px 2px rgba(26, 38, 33, 0.03);
+  --shadow-md:    0 4px 6px rgba(26, 38, 33, 0.04), 0 2px 4px rgba(26, 38, 33, 0.03);
+  --radius:       8px;
+  --radius-lg:    12px;
+}
+
+body {
+  background: var(--bg-secondary);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Card */
+.card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.btn-primary:hover { background: var(--primary-hover); }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border-dark);
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.btn-secondary:hover { background: var(--bg-tertiary); }
+
+.btn-danger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg);
+  color: var(--danger);
+  border: 1px solid var(--border-dark);
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.btn-danger:hover { background: var(--danger-soft); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  border: none;
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-ghost:hover { background: var(--bg-tertiary); color: var(--text); }
+
+/* Inputs */
+.input-field {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border-dark);
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  font-family: inherit;
+}
+.input-field:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(44, 74, 62, 0.1);
+}
+.input-field::placeholder { color: var(--text-light); }
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.badge-active   { background: var(--success-soft); color: var(--success); }
+.badge-lead     { background: var(--warning-soft); color: var(--warning); }
+.badge-inactive { background: var(--bg-tertiary);  color: var(--text-muted); }
+
+/* Table */
+.table-wrap { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+thead tr { background: var(--bg-secondary); border-bottom: 1px solid var(--border); }
+th { padding: 11px 16px; text-align: left; color: var(--text-muted); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: var(--bg-secondary); }
+td { padding: 12px 16px; color: var(--text); }
+
+/* Label */
+.form-label { display: block; font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 5px; }
+
+/* Divider */
+.divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-dark); border-radius: 3px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.spin { animation: spin 0.8s linear infinite; }
+
+
+/* Application shell configuration mapping */
+.layout-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Sidebar structure configuration */
+.layout-sidebar {
+  width: 240px;
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 10;
+  transition: width 0.2s ease, padding 0.2s ease;
+}
+
+.layout-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.btn-logout-sidebar {
+  margin-top: auto;
+  padding: 10px 12px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--danger);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  transition: background 0.15s;
+}
+.btn-logout-sidebar:hover {
+  background: var(--danger-soft);
+}
+
+/* Main Dashboard wrapper canvas layer */
+.layout-main-content {
+  margin-left: 240px;
+  flex: 1;
+  padding: 32px;
+  min-height: 100vh;
+  background: var(--bg-secondary);
+  transition: margin-left 0.2s ease, padding 0.2s ease;
+}
+
+/* Smartphone Adaptive Breakpoint Rules (< 768px viewports) */
+@media (max-width: 768px) {
+  .layout-container {
+    flex-direction: column; /* Switches from rows layout to stacked column cards layout */
+  }
+
+  /* Transforms left panel bar layout into a horizontal floating sticky top bar header */
+  .layout-sidebar {
+    width: 100%;
+    height: auto;
+    position: static; /* Removes viewport lock so scroll flows normally */
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Realign navigation menu selections inline side-by-side */
+  .layout-nav-links {
+    flex-direction: row;
+    gap: 8px;
+    flex: none;
+  }
+
+  /* Make links display cleanly without taking up full text block spaces */
+  .layout-sidebar div, .btn-logout-sidebar {
+    margin-top: 0 !important;
+  }
+  
+  .layout-sidebar div:has(div) {
+    margin-bottom: 0 !important; /* Resets large desktop branding margins */
+  }
+
+  /* Collapses right hand content layout panels to realign flush to screen boundaries */
+  .layout-main-content {
+    margin-left: 0 !important;
+    padding: 20px 16px;
+  }
+}

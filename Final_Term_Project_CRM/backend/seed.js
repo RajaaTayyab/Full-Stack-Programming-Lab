@@ -1,30 +1,57 @@
-require('dotenv').config();
 const mongoose = require('mongoose');
-const Customer = require('./models/Customer');
+const bcrypt = require('bcryptjs');
+require('dotenv').config();
 
-const SEED_USER_ID = 'Janjua-1780507795134'; // cclsopy from MongoDB after registering
+async function seed() {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log('Connected to MongoDB');
 
-const customers = [
-  { name: 'Tayyab Janjua', email: 'tayyab@gmail.com', phone: '0301-1111111', company: 'TechPk', status: 'Active' },
-  { name: 'Bilal Zaheer', email: 'bilal@corp.com', phone: '0302-2222222', company: 'SoftHouse', status: 'Lead' },
-  { name: 'Hassan Raza', email: 'hassan@startup.io', phone: '0303-3333333', company: 'Startup.io', status: 'Active' },
-  { name: 'Omer Farooq', email: 'omer@agency.pk', phone: '0304-4444444', company: 'Agency PK', status: 'Inactive' },
-  { name: 'Ahad Malik', email: 'ahad@designlab.com', phone: '0305-5555555', company: 'DesignLab', status: 'Lead' },
-  { name: 'Hamza Javed', email: 'hamza@firm.com', phone: '0306-6666666', company: 'ConsultFirm', status: 'Active' },
-  { name: 'Basit Junaid', email: 'basit@zara.pk', phone: '0307-7777777', company: 'ZaraStudio', status: 'Lead' },
-  { name: 'Ali Khan', email: 'ali@dev.io', phone: '0308-8888888', company: 'DevHub', status: 'Active' },
-  { name: 'Zainab Malik', email: 'zainab@media.com', phone: '0309-9999999', company: 'MediaCo', status: 'Inactive' },
-  { name: 'Ayesha Baig', email: 'ayesha@trade.pk', phone: '0310-1010101', company: 'TradeNet', status: 'Active' },
-  { name: 'Nadia Farooq', email: 'nadia@ngo.org', phone: '0311-1111222', company: 'HopeNGO', status: 'Lead' },
-  { name: 'Eman Sohail', email: 'eman@ts.com', phone: '0312-3334444', company: 'TS Group', status: 'Active' },
-  { name: 'Laiba Qureshi', email: 'amina@edu.pk', phone: '0313-5556666', company: 'EduPak', status: 'Inactive' },
-  { name: 'Javeria Khalid', email: 'rehan@rktech.io', phone: '0314-7778888', company: 'RK Tech', status: 'Lead' },
-  { name: 'Amal Javed', email: 'sobia@sj.pk', phone: '0315-9990000', company: 'SJ Ventures', status: 'Active' },
-];
+    const db = mongoose.connection;
 
-mongoose.connect(process.env.MONGO_URI).then(async () => {
-  await Customer.deleteMany({});
-  await Customer.insertMany(customers.map(c => ({ ...c, createdBy: SEED_USER_ID })));
-  console.log('15 customers seeded!');
-  process.exit();
-});
+    // Drop collections directly
+    try { await db.collection('users').drop(); } catch(e) {}
+    try { await db.collection('customers').drop(); } catch(e) {}
+    console.log('Cleared existing data');
+
+    // Hash password manually
+    const hashedPassword = await bcrypt.hash('admin123', 12);
+
+    // Insert admin directly into collection (bypasses all hooks)
+    await db.collection('users').insertOne({
+      name: 'Admin User',
+      email: 'admin@nexuscrm.pk',
+      password: hashedPassword,
+      createdAt: new Date()
+    });
+    console.log('Admin created → email: admin@nexuscrm.pk | password: admin123');
+
+    // Insert all 15 customers directly
+    await db.collection('customers').insertMany([
+      { name: 'Ahmed Raza',      email: 'ahmed.raza@techcorp.pk',    phone: '0301-1234567', company: 'TechCorp PK',     status: 'Active',   service: 'Web Development',     value: 150000, notes: 'Long-term client',           createdAt: new Date() },
+      { name: 'Sara Khan',       email: 'sara.khan@digitalhub.io',   phone: '0312-2345678', company: 'Digital Hub',     status: 'Lead',     service: 'SEO Services',        value: 45000,  notes: 'Interested in monthly plan', createdAt: new Date() },
+      { name: 'Bilal Mahmood',   email: 'bilal@cloudnine.pk',        phone: '0333-3456789', company: 'Cloud Nine',      status: 'Active',   service: 'Cloud Hosting',       value: 80000,  notes: 'Renewal due in July',        createdAt: new Date() },
+      { name: 'Ayesha Siddiqui', email: 'ayesha@fashionpk.com',      phone: '0321-4567890', company: 'FashionPK',       status: 'Inactive', service: 'E-commerce Setup',    value: 200000, notes: 'Project on hold',            createdAt: new Date() },
+      { name: 'Usman Tariq',     email: 'usman@buildpro.pk',         phone: '0345-5678901', company: 'BuildPro',        status: 'Active',   service: 'CRM Integration',     value: 120000, notes: 'VIP client',                 createdAt: new Date() },
+      { name: 'Zara Mirza',      email: 'zara@mediaplus.io',         phone: '0311-6789012', company: 'Media Plus',      status: 'Lead',     service: 'Social Media Mgmt',   value: 35000,  notes: 'Meeting scheduled',          createdAt: new Date() },
+      { name: 'Hamza Ali',       email: 'hamza@fintech360.pk',       phone: '0322-7890123', company: 'FinTech 360',     status: 'Active',   service: 'Mobile App Dev',      value: 300000, notes: 'Phase 2 starting',           createdAt: new Date() },
+      { name: 'Nadia Sheikh',    email: 'nadia@edulearn.com',        phone: '0334-8901234', company: 'EduLearn',        status: 'Lead',     service: 'LMS Development',     value: 90000,  notes: 'Proposal sent',              createdAt: new Date() },
+      { name: 'Faisal Qureshi',  email: 'faisal@retailmax.pk',       phone: '0344-9012345', company: 'RetailMax',       status: 'Active',   service: 'POS System',          value: 175000, notes: '3 branches',                 createdAt: new Date() },
+      { name: 'Mariam Javed',    email: 'mariam@healthplus.io',      phone: '0315-0123456', company: 'HealthPlus',      status: 'Inactive', service: 'Healthcare Portal',   value: 250000, notes: 'Budget constraints',         createdAt: new Date() },
+      { name: 'Kashif Nawaz',    email: 'kashif@logisticspk.com',    phone: '0336-1234560', company: 'Logistics PK',    status: 'Active',   service: 'Tracking System',     value: 140000, notes: 'Happy client',               createdAt: new Date() },
+      { name: 'Sana Riaz',       email: 'sana@startuplab.io',        phone: '0347-2345671', company: 'Startup Lab',     status: 'Lead',     service: 'MVP Development',     value: 60000,  notes: 'Startup discount applied',   createdAt: new Date() },
+      { name: 'Tariq Hassan',    email: 'tariq@exporters.pk',        phone: '0323-3456782', company: 'Exporters PK',    status: 'Active',   service: 'ERP Integration',     value: 380000, notes: 'Largest account',            createdAt: new Date() },
+      { name: 'Hira Baig',       email: 'hira@creativestudio.pk',    phone: '0352-4567893', company: 'Creative Studio', status: 'Lead',     service: 'UI/UX Design',        value: 55000,  notes: 'Portfolio review done',      createdAt: new Date() },
+      { name: 'Omar Farooq',     email: 'omar@securetech.io',        phone: '0317-5678904', company: 'SecureTech',      status: 'Active',   service: 'Cybersecurity Audit', value: 220000, notes: 'Annual contract',            createdAt: new Date() }
+    ]);
+    console.log('15 customers seeded successfully');
+
+    console.log('\n✅ Database seeded! You can now log in.');
+    process.exit(0);
+  } catch (err) {
+    console.error('Seed error:', err.message);
+    process.exit(1);
+  }
+}
+
+seed();

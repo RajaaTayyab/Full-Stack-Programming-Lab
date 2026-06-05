@@ -1,23 +1,32 @@
 const mongoose = require('mongoose');
 
 const invoiceSchema = new mongoose.Schema({
-  invoiceRef: { type: String, unique: true },
-  customer:   { type: mongoose.Schema.Types.ObjectId, ref: 'Customer', required: true },
-  services: [{
-    description: String,
-    amount: Number,
-  }],
-  total:     { type: Number },
-  issuedDate: { type: Date, default: Date.now },
-  createdBy:  { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-}, { timestamps: true });
+  customerId:   { type: mongoose.Schema.Types.ObjectId, ref: 'Customer', required: true },
+  customerName: { type: String, required: true },
+  services:     [{ name: String, amount: Number }],
+  totalAmount:  { type: Number, required: true },
+  date:         { type: Date, default: Date.now },
+  invoiceNo:    { type: String, unique: true }
+});
 
-invoiceSchema.pre('save', function (next) {
-  if (!this.invoiceRef) {
-    this.invoiceRef = 'INV-' + Date.now().toString(36).toUpperCase();
+// Modern Pre-Validate Hook: Uses async/await directly instead of old next callbacks
+invoiceSchema.pre('validate', async function () {
+  if (this.customerId && !this.customerName) {
+    const Customer = mongoose.model('Customer');
+    const associatedCustomer = await Customer.findById(this.customerId);
+    if (associatedCustomer) {
+      this.customerName = associatedCustomer.name;
+    } else {
+      throw new Error('Validation Failed: Associated customer record was not found.');
+    }
   }
-  this.total = this.services.reduce((sum, s) => sum + s.amount, 0);
-  next();
+});
+
+// Modern Pre-Save Hook: Handles random indexing synchronously without next callbacks
+invoiceSchema.pre('save', function () {
+  if (!this.invoiceNo) {
+    this.invoiceNo = 'INV-' + Math.floor(100000 + Math.random() * 900000);
+  }
 });
 
 module.exports = mongoose.model('Invoice', invoiceSchema);
