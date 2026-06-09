@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }) {
     <AuthProvider>
       {/* Global Browser Window Framework Tab Configurations */}
       <Head>
-        <title>Nexum CRM by Tayyab Janjua</title>
+        <title>Sage CRM by Tayyab Janjua</title>
         <meta name="description" content="Premium relationship management system" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>

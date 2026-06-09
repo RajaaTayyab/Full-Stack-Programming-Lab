@@ -43,7 +43,7 @@ export default function Chatbot() {
                 <Bot size={14} color="var(--primary)" />
               </div>
               <div>
-                <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text)' }}>Nexus Assistant</div>
+                <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text)' }}>Sage Assistant</div>
                 <div style={{ fontSize: 11, color: 'var(--success)', fontWeight: 500 }}>Online</div>
               </div>
             </div>

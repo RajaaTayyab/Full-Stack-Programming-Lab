@@ -17,7 +17,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/customers', customerRoutes);
 app.use('/api/invoices', invoiceRoutes);
 
-app.get('/', (req, res) => res.json({ message: 'NexusCRM API running' }));
+app.get('/', (req, res) => res.json({ message: 'SageCRM API running' }));
 
 mongoose
   .connect(process.env.MONGO_URI)
